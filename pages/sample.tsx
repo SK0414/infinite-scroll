@@ -23,13 +23,13 @@ const Sample = () => {
             <Card key={id}>
               <div>
                 <span>id: {id}</span>
-              </div>
-              <div>
-                <span>name:{name}</span>
+                <div>name:{name}</div>
               </div>
             </Card>
           ))}
-        <div className="target" style={{ height: '1px' }} ref={ref} />
+        <div className="target" style={{ height: '1px' }} ref={ref}>
+          이 부분이 viewport 내에 위치하게되면 다음 데이터를 불러옵니다.
+        </div>
       </div>
     </>
   );

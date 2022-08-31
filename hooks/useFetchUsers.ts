@@ -17,7 +17,7 @@ const userKeys = {
   lists: () => [...userKeys.all, 'list'] as const,
   list: (filters: string) => [...userKeys.lists(), { filters }] as const,
   details: () => [...userKeys.all, 'detail'] as const,
-  detail: (id: number) => [...userKeys.details(), id] as const
+  detail: (id: number) => [...userKeys.details(), id] as const,
 };
 
 const useFetchUsers = ({ size }: { size: number }) =>
@@ -25,10 +25,10 @@ const useFetchUsers = ({ size }: { size: number }) =>
     userKeys.lists(),
     ({ pageParam = 0 }: QueryFunctionContext) =>
       axios.get<PaginationResponse<User>>('/users', {
-        params: { page: pageParam, size }
+        params: { page: pageParam, size },
       }),
     {
-      getNextPageParam: ({ data: { isLastPage, pageNumber } }) => (isLastPage ? undefined : pageNumber + 1)
+      getNextPageParam: ({ data: { isLastPage, pageNumber } }) => (isLastPage ? undefined : pageNumber + 1),
     }
   );
 
